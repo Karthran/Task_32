@@ -11,13 +11,13 @@ class MyTestSuite : public ::testing::Test
 protected:
     void SetUp()
     {
-        std::cout << "local setup" << std::endl;
+        //std::cout << "local setup" << std::endl;
         _objAnderTesting = new ClassThatUsesDB(&_mock);
     }
 
     void TearDown()
     {
-        std::cout << "local teardown" << std::endl;
+        //std::cout << "local teardown" << std::endl;
         delete _objAnderTesting;
     }
 

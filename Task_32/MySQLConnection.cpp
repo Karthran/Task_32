@@ -7,23 +7,23 @@ MySQLConnection::~MySQLConnection() {}
 
 auto MySQLConnection::open() -> int
 {
-    // Получаем дескриптор соединения
+    // РџРѕР»СѓС‡Р°РµРј РґРµСЃРєСЂРёРїС‚РѕСЂ СЃРѕРµРґРёРЅРµРЅРёСЏ
     _mysql = mysql_init(NULL);
     if (_mysql == nullptr)
     {
-        // Если дескриптор не получен — выводим сообщение об ошибке
+        // Р•СЃР»Рё РґРµСЃРєСЂРёРїС‚РѕСЂ РЅРµ РїРѕР»СѓС‡РµРЅ вЂ” РІС‹РІРѕРґРёРј СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
         std::cout << "Error: can't create MySQL-descriptor" << std::endl;
         return -1;
     }
-    // Подключаемся к серверу
+    // РџРѕРґРєР»СЋС‡Р°РµРјСЃСЏ Рє СЃРµСЂРІРµСЂСѓ
     if (!mysql_real_connect(_mysql, "localhost", "root", "rksm", "testdb", 0, NULL, 0))
     {
-        // Если нет возможности установить соединение с БД выводим сообщение об ошибке
+        // Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р” РІС‹РІРѕРґРёРј СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
         std::cout << "Error: can't connect to database " << mysql_error(_mysql) << std::endl;
         return -1;
     }
 
-    // Если соединение успешно установлено выводим фразу — "Success!"
+    // Р•СЃР»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СѓСЃРїРµС€РЅРѕ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ РІС‹РІРѕРґРёРј С„СЂР°Р·Сѓ вЂ” "Success!"
     std::cout << "Success!" << std::endl;
     mysql_set_character_set(_mysql, "utf8");
     std::cout << "connection characterset: " << mysql_character_set_name(_mysql) << std::endl;
@@ -32,7 +32,7 @@ auto MySQLConnection::open() -> int
 
 auto MySQLConnection::close() -> void
 {
-    // Закрываем соединение с сервером базы данных
+    // Р—Р°РєСЂС‹РІР°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СЃРµСЂРІРµСЂРѕРј Р±Р°Р·С‹ РґР°РЅРЅС‹С…
     mysql_close(_mysql);
 }
 
